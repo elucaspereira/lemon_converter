@@ -6,6 +6,11 @@
  3° conversao de temperatura 
  4° conversao de hectares para alqueire
 
+ # conversor de moedas
+ App que mostra a taxa de conversao do dia das principais moedas existentes 
+ 
+ possibilita converter o valor esejado a partir da taxa do dia 
+
  
 
 
