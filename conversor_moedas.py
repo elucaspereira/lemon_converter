@@ -1,6 +1,5 @@
 from dotenv import load_dotenv
 import os
-
 import requests
 
 load_dotenv()
@@ -13,7 +12,10 @@ def valorDaMoeda(moedaBase, moedaDestino):
     url = f'https://v6.exchangerate-api.com/v6/{api_key}/pair/{moedaBase}/{moedaDestino}'
     response = requests.get(url)
     data = response.json()
-    print("{:.2f}".format(data["conversion_rate"]))
+    taxa = data["conversion_rate"]
+    return taxa
+    # print("{:.2f}".format(data["conversion_rate"]))
+    
 
 
 if api_key:
@@ -40,10 +42,14 @@ select_type_conversion = input( #RECEBE O TIPO DE CONVERSAO QUE O USUARIO DESEJA
 select = int(select_type_conversion)
 print('Carregando Dados...')
 
+#fazer um if else para saber se deseja so o valor da taxa ou converter algum valor
+
 if select < 1 or select > 9: 
     print('Você deve selecionar um intervalo de 1 a 9!')
 elif select == 1:
-    valorDaMoeda('USD', 'BRL')
+    # print ( valorDaMoeda('USD', 'BRL') * 2)
+    print ( valorDaMoeda('USD', 'BRL')) 
+    
 elif select == 2:
     valorDaMoeda('BRL','USD')
 elif select == 3:
@@ -53,11 +59,11 @@ elif select == 4:
 elif select == 5:
     valorDaMoeda('EUR', 'BRL')
 elif select == 6:
-     valorDaMoeda('BRL', 'EUR')
+    valorDaMoeda('BRL', 'EUR')
 elif select == 7:
-     valorDaMoeda('JPY', 'BRL')   
+    valorDaMoeda('JPY', 'BRL')   
 elif select == 8:
-     valorDaMoeda('BRL', 'JPY')
+    valorDaMoeda('BRL', 'JPY')
 else:
     moeda_base = input('Digite a sigla da moeda base: ')
     moeda_destino = input ('Digite a Sigla da moeda destino: ')
