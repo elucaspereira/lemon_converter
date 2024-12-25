@@ -16,6 +16,62 @@ def valorDaMoeda(moedaBase, moedaDestino):
     return taxa
     # print("{:.2f}".format(data["conversion_rate"]))
     
+def valorTaxa():
+    if select < 1 or select > 9: 
+        print('Você deve selecionar um intervalo de 1 a 9!')
+    elif select == 1:
+        print (valorDaMoeda('USD', 'BRL'))
+    elif select == 2:
+        valorDaMoeda('BRL','USD')
+    elif select == 3:
+        valorDaMoeda('USD','EUR')
+    elif select == 4:
+        valorDaMoeda('EUR','USD')
+    elif select == 5:
+        valorDaMoeda('EUR', 'BRL')
+    elif select == 6:
+        valorDaMoeda('BRL', 'EUR')
+    elif select == 7:
+        valorDaMoeda('JPY', 'BRL')   
+    elif select == 8:
+        valorDaMoeda('BRL', 'JPY')
+    else:
+        moeda_base = input('Digite a sigla da moeda base: ')
+        moeda_destino = input ('Digite a Sigla da moeda destino: ')
+        valorDaMoeda(moeda_base, moeda_destino)
+        
+def converte_valor(valor):
+    if select < 1 or select > 9: 
+        print('Você deve selecionar um intervalo de 1 a 9!')
+    elif select == 1:
+        val_convertido = valor * valorDaMoeda('USD', 'BRL')
+        return val_convertido
+    elif select == 2:
+        val_convertido = valor * valorDaMoeda('BRL','USD')
+        return val_convertido
+    elif select == 3:
+        val_convertido = valor * valorDaMoeda('USD','EUR')
+        return val_convertido
+    elif select == 4:
+        val_convertido = valor * valorDaMoeda('EUR','USD')
+        return val_convertido
+    elif select == 5:
+        val_convertido = valor * valorDaMoeda('EUR', 'BRL')
+        return val_convertido
+    elif select == 6:
+        val_convertido = valor * valorDaMoeda('BRL', 'EUR')
+        return val_convertido
+    elif select == 7:
+        val_convertido = valor * valorDaMoeda('JPY', 'BRL')
+        return val_convertido   
+    elif select == 8:
+        val_convertido = valor * valorDaMoeda('BRL', 'JPY')
+        return val_convertido
+    else:
+        moeda_base = input('Digite a sigla da moeda base: ')
+        moeda_destino = input ('Digite a Sigla da moeda destino: ')
+        val_convertido = valor * valorDaMoeda(moeda_base, moeda_destino)
+        return val_convertido
 
 
 if api_key:
@@ -42,29 +98,21 @@ select_type_conversion = input( #RECEBE O TIPO DE CONVERSAO QUE O USUARIO DESEJA
 select = int(select_type_conversion)
 print('Carregando Dados...')
 
-#fazer um if else para saber se deseja so o valor da taxa ou converter algum valor
-
-if select < 1 or select > 9: 
-    print('Você deve selecionar um intervalo de 1 a 9!')
-elif select == 1:
-    # print ( valorDaMoeda('USD', 'BRL') * 2)
-    print ( valorDaMoeda('USD', 'BRL')) 
-    
-elif select == 2:
-    valorDaMoeda('BRL','USD')
-elif select == 3:
-    valorDaMoeda('USD','EUR')
-elif select == 4:
-    valorDaMoeda('EUR','USD')
-elif select == 5:
-    valorDaMoeda('EUR', 'BRL')
-elif select == 6:
-    valorDaMoeda('BRL', 'EUR')
-elif select == 7:
-    valorDaMoeda('JPY', 'BRL')   
-elif select == 8:
-    valorDaMoeda('BRL', 'JPY')
+converter_valor_especifico = input('Converter um valor Especifico? (S/N): ')
+if converter_valor_especifico != 'S' and converter_valor_especifico != 'N':
+    print('Opção selecionada inválida, Digite apenas S ou N')
+elif converter_valor_especifico == 'S':
+    converter = input('Digite o valor que deseja converter: ')
+    valor_a_converter = int(converter)
+    print(f'R$ {converte_valor(valor_a_converter)}')
 else:
-    moeda_base = input('Digite a sigla da moeda base: ')
-    moeda_destino = input ('Digite a Sigla da moeda destino: ')
-    valorDaMoeda(moeda_base, moeda_destino)
+    valorTaxa()
+
+
+        
+        
+        
+          
+
+        
+
