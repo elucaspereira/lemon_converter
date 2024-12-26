@@ -2,6 +2,8 @@ from dotenv import load_dotenv
 import os
 import requests
 
+
+
 load_dotenv()
 
 
@@ -98,7 +100,7 @@ select_type_conversion = input( #RECEBE O TIPO DE CONVERSAO QUE O USUARIO DESEJA
 select = int(select_type_conversion)
 print('Carregando Dados...')
 
-converter_valor_especifico = input('Converter um valor Especifico? (S/N): ')
+converter_valor_especifico = input('Converter um valor Especifico? (S/N): ').upper()
 if converter_valor_especifico != 'S' and converter_valor_especifico != 'N':
     print('Opção selecionada inválida, Digite apenas S ou N')
 elif converter_valor_especifico == 'S':
